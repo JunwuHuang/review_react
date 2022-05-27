@@ -1,5 +1,6 @@
-import { noTimeout } from "./ReactFiberHostConfig";
+import { Container, noTimeout } from "./ReactFiberHostConfig";
 import { createLaneMap, NoLane, NoLanes, NoTimestamp } from "./ReactFiberLane";
+import { RootTag } from "./ReactRootTags";
 
 export default class FiberRootNode {
   tag;
@@ -29,11 +30,11 @@ export default class FiberRootNode {
   identifierPrefix;
   onRecoverableError;
   constructor(
-    containerInfo,
-    tag,
-    _hydrate, // 该入参仅在开发模式下消费，用语提醒用户
-    identifierPrefix,
-    onRecoverableError
+    containerInfo: Container,
+    tag: RootTag,
+    _hydrate: boolean, // 该入参仅在开发模式下消费，用语提醒用户
+    identifierPrefix: string,
+    onRecoverableError: null | ((error: mixed) => void)
   ) {
     this.tag = tag;
     this.containerInfo = containerInfo;
